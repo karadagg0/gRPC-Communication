@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPC_Client";
+
+package greet;
+
+service Sum {
+  rpc SumValues (stream Values) returns (ResponseValue);
+}
+
+message Values {
+   uint32 value = 1;
+}
+
+message ResponseValue {
+  string SumOfValues = 1;
+}

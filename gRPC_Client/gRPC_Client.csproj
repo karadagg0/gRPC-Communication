@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="guidStream.proto" />
+    <None Remove="message.proto" />
+    <None Remove="nameProducer.proto" />
+    <None Remove="sumValues.proto" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="guidStream.proto" GrpcServices="Client" />
+		<Protobuf Include="message.proto" GrpcServices="Client" />
+		<Protobuf Include="greet.proto" GrpcServices="Client" />
+		<Protobuf Include="nameProducer.proto" GrpcServices="Client" />
+		<Protobuf Include="sumValues.proto" GrpcServices="Client" />
+	</ItemGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.29.2" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.67.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.68.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\GrpcService\gRPC_Server.csproj" />
+  </ItemGroup>
+
+</Project>

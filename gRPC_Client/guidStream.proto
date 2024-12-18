@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPC_Client";
+
+package greet;
+
+service GuidProducer {
+  rpc SendGuid (GuidRequest) returns (stream GuidResponse);
+}
+
+message GuidRequest {
+  string guid = 1;
+}
+
+message GuidResponse {
+  string guid = 1;
+}

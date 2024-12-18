@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPC_NameProducerServer";
+
+package greet;
+
+service NameProducer {
+  rpc CreateName (stream Request_Name) returns (stream Response_Name);
+}
+
+message Request_Name {
+   string name = 1;
+}
+
+message Response_Name {
+  string name = 1;
+}

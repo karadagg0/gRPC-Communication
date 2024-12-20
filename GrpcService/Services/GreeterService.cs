@@ -16,7 +16,7 @@ namespace gRPC_Server.Services
             if (string.IsNullOrWhiteSpace(request.Name))
             {
                 throw new RpcException(new Status(StatusCode.InvalidArgument, "Name cannot be empty."));
-            }
+            } 
 
             await Task.Delay(100);
 

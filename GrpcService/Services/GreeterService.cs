@@ -11,12 +11,19 @@ namespace gRPC_Server.Services
             _logger = logger;
         }
 
-        public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
+        public override async Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {
-            return Task.FromResult(new HelloReply
+            if (string.IsNullOrWhiteSpace(request.Name))
             {
-                Message = "Hello " + request.Name
-            });
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "Name cannot be empty."));
+            }
+
+            await Task.Delay(100);
+
+            return new HelloReply
+            {
+                Message = $"Hello, {request.Name.Trim()}! Welcome to our service."
+            };
         }
     }
 }
